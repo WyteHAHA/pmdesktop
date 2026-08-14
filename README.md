@@ -1,3 +1,12 @@
+# Unofficial penguinmod desktop port
+
+small project made by wyte on simple python
+penguinmod extensions may break offline!!
+
+
+
+### PENGUIN MOD README BELOW
+
 scratch-gui modified for use in [TurboWarp](https://turbowarp.org/) then modified for use in [PenguinMod](https://studio.penguinmod.com) 😀
 
 ## Setup
