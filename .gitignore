@@ -17,9 +17,6 @@ yarn.lock
 .webpack
 /pybuild
 
-# Remove this if adding icons or modifying exe in any way
-app.spec
-
 # Generated translation files
 /translations
 /locale

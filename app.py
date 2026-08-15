@@ -3,8 +3,42 @@ import sys
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import threading
 import webview
+import subprocess
+from multiprocessing import freeze_support
+import time
+from pypresence import Presence
 
-# Path to your 'build' directory
+
+def start_rich_presence(): # discord rich presence
+    try:
+        # rich presence
+        client_id = "1538180761453072435"
+
+        RPC = Presence(client_id)
+        RPC.connect()
+
+        # put status here
+        RPC.update(
+            details="Coding in PenguinMod",
+            state="Unofficial Port by Wyte",
+            start=time.time(),  # starts timer
+            large_image="logo",
+            large_text="PenguinMod",
+            # small_image="placeholder",
+            # small_text="placeholder",
+            buttons=[
+                {"label": "Visit Github", "url": "https://github.com/WyteHAHA/pmdesktop"}
+            ]
+        )
+
+        print("discord rpc OK")
+        while True:
+            time.sleep(15)  # Updates every 15 seconds  
+    except Exception:
+        pass
+
+
+# web
 BUILD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build')
 
 def run_server():
@@ -16,6 +50,11 @@ def run_server():
     server.serve_forever()
 
 if __name__ == '__main__':
+    freeze_support() # stop it from tweaking
+
+    # launch rpc
+    threading.Thread(target=start_rich_presence, daemon=True).start()
+
     if not os.path.exists(BUILD_DIR):
         print(f"Error: Build directory isnt at {BUILD_DIR}")
         print("Wrong directory or not built?")
